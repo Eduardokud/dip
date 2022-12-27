@@ -1,7 +1,7 @@
-version: '1.0'
+version: '3.7'
 services:
-  java-app:
+  node-app:
     build: .
-    image: java-app:1.0
+    image: node-app:1.0
     ports:
-      - '8080:8080'
+      - '9999:9999'
