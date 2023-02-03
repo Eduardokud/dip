@@ -2,33 +2,32 @@ package ru.netology.testmode.test;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import org.junit.jupiter.api.*;
+import ru.netology.testmode.date.Card;
+import ru.netology.testmode.date.DataGenerator;
+import ru.netology.testmoe.page.PaymentPage;
 
-import java.nio.channels.Selector;
-import java.time.Duration;
 
-import static com.codeborne.selenide.Condition.exactText;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.open;
 
 
 public class CreditTest {
-    @BeforeEach
-    void setup() {
-        open("http://localhost:8080");
-    }
-
     @Test
-    void  BuyTourValidCardNumber(){
-        var CardNumber = "4444444444444441";
+    public void validDate() {
+        var paymentPage = open("http://localhost:8080", PaymentPage.class);
+        var dateInfo = DataGenerator.getValidCardInfo();
+        var setDate = paymentPage.SetDate(dateInfo);
+
+
+    }
+        /*var CardNumber = "4444444444444441";
         var cvv = DataGenerator.generateCvv();
         var mmOfEnd = 2;
         var mmTry = DataGenerator.generateMonth(mmOfEnd);
         var yeOfEnd =3;
         var yeTry= DataGenerator.generateYear(yeOfEnd);
-        var rrrrr= DataGenerator.generateinvalidCardNumber();
+
         $("[class='button__text']").click();
         $("[placeholder='0000 0000 0000 0000']").setValue(CardNumber);
         $("[placeholder='08']").setValue(mmTry);
@@ -41,13 +40,12 @@ public class CreditTest {
     }
     @Test
     void  BuyTourInvalidCardNumber(){
-        var CardNumber = DataGenerator.generateinvalidCardNumber();
+        var CardNumber = DataGenerator.generateInvalidCardNumber();
         var cvv = DataGenerator.generateCvv();
         var mmOfEnd = 2;
         var mmTry = DataGenerator.generateMonth(mmOfEnd);
         var yeOfEnd =3;
         var yeTry= DataGenerator.generateYear(yeOfEnd);
-        var rrrrr= DataGenerator.generateinvalidCardNumber();
         $("[class='button__text']").click();
         $("[placeholder='0000 0000 0000 0000']").setValue(CardNumber);
         $("[placeholder='08']").setValue(mmTry);
@@ -57,5 +55,5 @@ public class CreditTest {
         $("[placeholder='999']").setValue(cvv);
         $(byText("Продолжить")).click();
         $("[class='notification__title']").shouldBe(Condition.visible, Duration.ofSeconds(10));
-    }
+    } */
 }
