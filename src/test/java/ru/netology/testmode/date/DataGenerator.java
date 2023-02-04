@@ -46,9 +46,13 @@ public class DataGenerator {
         return "4444 4444 4444 4441";
     }
 
-    public static Card getValidCardInfo() {
+   public static Card getValidCardInfo() {
         return new Card(getValidCardNumber(), getValidMonth(), getValidYear(), getValidName(), getValidCvv());
     }
+   //public static Card getValidCardInfo() {
+        //return new Card("4444444444444441", "06", "24", "dsfgdgd dgfdg", "911");
+    //}
+
 
 
 
