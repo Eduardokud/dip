@@ -17,25 +17,26 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class PaymentPage {
     @FindBy(css = "[class='button__text']")
-    private SelenideElement cardNumberField;
+    private static SelenideElement cardNumberField;
     @FindBy(css = "[placeholder='08']")
-    private SelenideElement dateMonthField;
+    private static SelenideElement dateMonthField;
     @FindBy(css = "[placeholder='22']")
-    private SelenideElement dateYearField;
+    private static SelenideElement dateYearField;
 
-    ElementsCollection items = $$("[autocomplete='on']");
-    private SelenideElement nameField = items.get(4);
+    static ElementsCollection items = $$("[autocomplete='on']");
+    private static SelenideElement nameField = items.get(4);
     @FindBy(css = "[placeholder='999']")
-    private SelenideElement cvvField;
-    private SelenideElement continueButton = $(byText("Продолжить"));
+    private static SelenideElement cvvField;
+    private static SelenideElement continueButton = $(byText("Продолжить"));
     private SelenideElement heading = $(byText("Оплата по карте"));
+    private static SelenideElement successfully = $(byText("Успешно"));
 
     public PaymentPage() {
         heading.shouldBe(visible);
     }
 
 
-    public StartPage SetDate(Card card) {
+    public static void SetValidDate(Card card) {
 
         cardNumberField.setValue(card.getNumber());
         dateMonthField.setValue(card.getMonth());
@@ -43,7 +44,8 @@ public class PaymentPage {
         nameField.setValue(card.getName());
         cvvField.setValue(card.getCvv());
         continueButton.click();
-        return new StartPage();
+        successfully.shouldBe(visible);
+
 
 
     }

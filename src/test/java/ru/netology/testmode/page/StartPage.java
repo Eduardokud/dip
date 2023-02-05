@@ -8,14 +8,14 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class StartPage {
     private SelenideElement heading = $$("h2").find(text("Путешествие дня"));
-    private SelenideElement buyButton = $$("button").find(exactText("Купить"));
+    private static SelenideElement buyButton = $$("button").find(exactText("Купить"));
     private SelenideElement creditButton = $$("button").find(exactText("Купить в кредит"));
 
     public StartPage() {
         heading.shouldBe(visible);
     }
 
-    public PaymentPage goToPaymentPage() {
+    public static PaymentPage goToPaymentPage() {
         buyButton.click();
         return new PaymentPage();
     }

@@ -6,6 +6,7 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import org.junit.jupiter.api.*;
 import ru.netology.testmode.date.Card;
 import ru.netology.testmode.date.DataGenerator;
+import ru.netology.testmode.page.StartPage;
 import ru.netology.testmoe.page.PaymentPage;
 
 
@@ -15,9 +16,11 @@ import static com.codeborne.selenide.Selenide.open;
 public class CreditTest {
     @Test
     public void validDate() {
-        var paymentPage = open("http://localhost:8080", PaymentPage.class);
+        var startPage = open("http://localhost:8080", StartPage.class);
+        var paymentPage = StartPage.goToPaymentPage();
         var dateInfo = DataGenerator.getValidCardInfo();
-        var setDate = paymentPage.SetDate(dateInfo);
+
+        PaymentPage.SetValidDate(dateInfo);
 
 
     }
