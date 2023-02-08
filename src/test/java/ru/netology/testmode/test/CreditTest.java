@@ -8,8 +8,10 @@ import ru.netology.testmode.date.Card;
 import ru.netology.testmode.date.DataGenerator;
 import ru.netology.testmode.page.StartPage;
 import ru.netology.testmoe.page.PaymentPage;
+import ru.netology.testmoe.page.Verify;
 
 
+import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 
@@ -19,8 +21,14 @@ public class CreditTest {
         var startPage = open("http://localhost:8080", StartPage.class);
         var paymentPage = StartPage.goToPaymentPage();
         var dateInfo = DataGenerator.getValidCardInfo();
+        PaymentPage page1 = new PaymentPage();
+        page1.Setlogin(dateInfo);
 
-        PaymentPage.SetValidDate(dateInfo);
+
+        //var pay = PaymentPage.;
+
+
+        //PaymentPage.SetValidDate(dateInfo);
 
 
     }

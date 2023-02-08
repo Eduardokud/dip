@@ -21,7 +21,8 @@ dependencies {
     testImplementation("io.github.bonigarcia:webdrivermanager:5.3.0")
     testImplementation group: 'com.codeborne', name: 'selenide', version: '6.6.3'
     testImplementation 'com.github.javafaker:javafaker:1.0.2'
-    //implementation 'org.seleniumhq.selenium:selenium-devtools-v86:4.2.2'
+    testImplementation 'org.seleniumhq.selenium:selenium-java:4.1.4'
+   // testImplementation 'org.seleniumhq.selenium:selenium-devtools-v86:4.2.2'
 
 }
 test {

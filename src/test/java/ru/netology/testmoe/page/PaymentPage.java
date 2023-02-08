@@ -8,35 +8,33 @@ import ru.netology.testmode.date.Card;
 import ru.netology.testmode.date.DataGenerator;
 import ru.netology.testmode.page.StartPage;
 
+import java.time.Duration;
 import java.util.Set;
 
+import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class PaymentPage {
-    @FindBy(css = "[class='button__text']")
-    private static SelenideElement cardNumberField;
-    @FindBy(css = "[placeholder='08']")
-    private static SelenideElement dateMonthField;
-    @FindBy(css = "[placeholder='22']")
-    private static SelenideElement dateYearField;
+    private  SelenideElement cardNumberField = $("[placeholder='0000 0000 0000 0000']");
+    private  SelenideElement dateMonthField = $("[placeholder='08']");
+    private  SelenideElement dateYearField = $("[placeholder='22']");
+     ElementsCollection items = $$("[autocomplete='on']");
+    private  SelenideElement nameField = items.get(4);
 
-    static ElementsCollection items = $$("[autocomplete='on']");
-    private static SelenideElement nameField = items.get(4);
-    @FindBy(css = "[placeholder='999']")
-    private static SelenideElement cvvField;
-    private static SelenideElement continueButton = $(byText("Продолжить"));
+    private  SelenideElement cvvField=  $("[placeholder='999']");
+    private  SelenideElement continueButton = $(byText("Продолжить"));
     private SelenideElement heading = $(byText("Оплата по карте"));
-    private static SelenideElement successfully = $(byText("Успешно"));
+    private  SelenideElement successfully = $(byText("Успешно"));
 
     public PaymentPage() {
         heading.shouldBe(visible);
     }
 
 
-    public static void SetValidDate(Card card) {
+  /*  public static void SetValidDate(Card card) {
 
         cardNumberField.setValue(card.getNumber());
         dateMonthField.setValue(card.getMonth());
@@ -46,8 +44,16 @@ public class PaymentPage {
         continueButton.click();
         successfully.shouldBe(visible);
 
-
-
+    }*/
+    public  void  Setlogin(Card info){
+        cardNumberField.setValue(info.getNumber());
+        dateMonthField.setValue(info.getMonth());
+        dateYearField.setValue(info.getYear());
+        nameField.setValue(info.getName());
+        cvvField.setValue(info.getCvv());
+        continueButton.click();
+        successfully.shouldHave(exactText("Успешно"), Duration.ofSeconds(15)).shouldBe(visible);
+        //return new Verify();
     }
 
 }
