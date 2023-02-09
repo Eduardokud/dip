@@ -14,22 +14,24 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class CreditPage {
     private SelenideElement cardNumberField = $("[placeholder='0000 0000 0000 0000']");
-    private  SelenideElement dateMonthField = $("[placeholder='08']");
-    private  SelenideElement dateYearField = $("[placeholder='22']");
+    private SelenideElement dateMonthField = $("[placeholder='08']");
+    private SelenideElement dateYearField = $("[placeholder='22']");
     ElementsCollection items = $$("[autocomplete='on']");
-    private  SelenideElement nameField = items.get(4);
+    private SelenideElement nameField = items.get(4);
 
-    private  SelenideElement cvvField=  $("[placeholder='999']");
-    private  SelenideElement continueButton = $(byText("Продолжить"));
+    private SelenideElement cvvField = $("[placeholder='999']");
+    private SelenideElement continueButton = $(byText("Продолжить"));
     private SelenideElement heading = $(byText("Кредит по данным карты"));
-    private  SelenideElement successfully = $(byText("Успешно"));
+    private SelenideElement successfully = $(byText("Успешно"));
     private SelenideElement errormessenge = $(byText("Ошибка"));
     private SelenideElement errorMonthmessege = $(byText("Неверно указан срок действия карты"));
     private SelenideElement errorYearmessege = $(byText("Неверно указан срок действия карты"));
 
-    public CreditPage() {heading.shouldBe(visible);}
+    public CreditPage() {
+        heading.shouldBe(visible);
+    }
 
-    public  void  SetValidDate(Card info){
+    public void SetValidDate(Card info) {
         cardNumberField.setValue(info.getNumber());
         dateMonthField.setValue(info.getMonth());
         dateYearField.setValue(info.getYear());
@@ -38,7 +40,8 @@ public class CreditPage {
         continueButton.click();
         successfully.shouldHave(exactText("Успешно"), Duration.ofSeconds(15)).shouldBe(visible);
     }
-    public void SetInvalidCardNumber(Card info){
+
+    public void SetInvalidCardNumber(Card info) {
         cardNumberField.setValue(info.getNumber());
         dateMonthField.setValue(info.getMonth());
         dateYearField.setValue(info.getYear());
@@ -47,7 +50,8 @@ public class CreditPage {
         continueButton.click();
         errormessenge.shouldHave(exactText("Ошибка"), Duration.ofSeconds(15)).shouldBe(visible);
     }
-    public void SetInvalidMonth(Card info){
+
+    public void SetInvalidMonth(Card info) {
         cardNumberField.setValue(info.getNumber());
         dateMonthField.setValue(info.getMonth());
         dateYearField.setValue(info.getYear());
@@ -56,7 +60,8 @@ public class CreditPage {
         continueButton.click();
         errorMonthmessege.shouldHave(exactText("Неверно указан срок действия карты"), Duration.ofSeconds(15)).shouldBe(visible);
     }
-    public void SetInvalidYear(Card info){
+
+    public void SetInvalidYear(Card info) {
         cardNumberField.setValue(info.getNumber());
         dateMonthField.setValue(info.getMonth());
         dateYearField.setValue(info.getYear());

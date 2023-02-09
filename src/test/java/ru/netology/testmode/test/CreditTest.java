@@ -38,6 +38,7 @@ public class CreditTest {
         PaymentPage page = new PaymentPage();
         page.SetInvalidCardNumber(dateInfo);
     }
+
     @Test
     public void CreditTourInvalidCardNumber() {
         var startPage = open("http://localhost:8080", StartPage.class);
@@ -46,6 +47,7 @@ public class CreditTest {
         CreditPage page = new CreditPage();
         page.SetInvalidCardNumber(dateInfo);
     }
+
     @Test
     public void BuyTourInvalidMonth() {
         var startPage = open("http://localhost:8080", StartPage.class);
@@ -54,6 +56,7 @@ public class CreditTest {
         PaymentPage page = new PaymentPage();
         page.SetInvalidMonth(dateInfo);
     }
+
     @Test
     public void BuyTourInvalidYear() {
         var startPage = open("http://localhost:8080", StartPage.class);
@@ -62,6 +65,7 @@ public class CreditTest {
         PaymentPage page = new PaymentPage();
         page.SetInvalidYear(dateInfo);
     }
+
     @Test
     public void CreditTourInvalidMonth() {
         var startPage = open("http://localhost:8080", StartPage.class);
@@ -70,6 +74,7 @@ public class CreditTest {
         CreditPage page = new CreditPage();
         page.SetInvalidMonth(dateInfo);
     }
+
     @Test
     public void CreditTourInvalidYear() {
         var startPage = open("http://localhost:8080", StartPage.class);

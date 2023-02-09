@@ -1,19 +1,12 @@
 package ru.netology.testmode.date;
 
 import com.github.javafaker.Faker;
-import lombok.Value;
 
-import java.math.BigInteger;
 import java.time.LocalDate;
-import java.time.Year;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.localStorage;
-
 public class DataGenerator {
-
     private DataGenerator() {
     }
 
@@ -37,7 +30,6 @@ public class DataGenerator {
         return fakerEn.name().firstName() + " " + fakerEn.name().lastName();
     }
 
-
     public static String getValidCvv() {
         return fakerEn.number().digits(3);
     }
@@ -46,27 +38,28 @@ public class DataGenerator {
         return "4444 4444 4444 4441";
     }
 
-   public static Card getValidCardInfo() {
+    public static Card getValidCardInfo() {
         return new Card(getValidCardNumber(), getValidMonth(), getValidYear(), getValidName(), getValidCvv());
     }
-    public static Card getInvalidCardNumber(){
+
+    public static Card getInvalidCardNumber() {
         return new Card(getRandomCardNumber(), getValidMonth(), getValidYear(), getValidName(), getValidCvv());
     }
+
     public static String getInvalidMonth() {
-        return  "13";
+        return "13";
     }
+
     public static String getInvalidYear(int year) {
         String ye = LocalDate.now().plusYears(year).format(DateTimeFormatter.ofPattern("yy"));
         return ye;
     }
-    public static Card getInvalidCardMonth(){
+
+    public static Card getInvalidCardMonth() {
         return new Card(getValidCardNumber(), getInvalidMonth(), getValidYear(), getValidName(), getValidCvv());
     }
+
     public static Card getInvalidalidCardYear() {
         return new Card(getValidCardNumber(), getValidMonth(), getInvalidYear(6), getValidName(), getValidCvv());
     }
-
-
-
-
 }
