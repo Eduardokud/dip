@@ -49,72 +49,24 @@ public class DataGenerator {
    public static Card getValidCardInfo() {
         return new Card(getValidCardNumber(), getValidMonth(), getValidYear(), getValidName(), getValidCvv());
     }
-   //public static Card getValidCardInfo() {
-        //return new Card("4444444444444441", "06", "24", "dsfgdgd dgfdg", "911");
-    //}
-
-
-
-
-
-
-
-
-
-    /* public static Month getMonth(int month) {
-        String mm = LocalDate.now().plusMonths(month).format(DateTimeFormatter.ofPattern("MM"));
-        return new Month("mm");
+    public static Card getInvalidCardNumber(){
+        return new Card(getRandomCardNumber(), getValidMonth(), getValidYear(), getValidName(), getValidCvv());
     }
-
-
-    public static Year getYear(int year) {
+    public static String getInvalidMonth() {
+        return  "13";
+    }
+    public static String getInvalidYear(int year) {
         String ye = LocalDate.now().plusYears(year).format(DateTimeFormatter.ofPattern("yy"));
-        return new Year(ye);
+        return ye;
     }
-    public static Name getName(String locale) {
-        var faker = new Faker(new Locale(locale));
-        String n=faker.name().lastName() + " " + faker.name().firstName();
-        return new Name (n);
-
-
+    public static Card getInvalidCardMonth(){
+        return new Card(getValidCardNumber(), getInvalidMonth(), getValidYear(), getValidName(), getValidCvv());
     }
-   public static  Cvv getCvv() {
-        int a = 100+ (int) (Math.random()*899);
-        String b=Integer.toString(a);
-        return  new Cvv(b);
-
-   }
-   public static String generateInvalidCardNumber() {
-         long c = 2000000000000000L + (long) (Math.random()*4000000000000000L);
-         String q =Long.toString(c);
-         return q;
+    public static Card getInvalidalidCardYear() {
+        return new Card(getValidCardNumber(), getValidMonth(), getInvalidYear(6), getValidName(), getValidCvv());
+    }
 
 
-   }
-   public static ValidCardNumber getValidCardNumber(){
-        return  new ValidCardNumber("4444444444444441");
-   }
-   @Value
-    public static class ValidCardNumber{
-        String cardNumber;
-
-   }
-   @Value
-    public static class Cvv{
-        String Cvv;
-   }
-   @Value
-    public static class Year{
-        String year;
-   }
-   @Value
-    public static class Month{
-        String month;
-   }
-   @Value
-    public static class Name{
-        String name;
-   }*/
 
 
 }

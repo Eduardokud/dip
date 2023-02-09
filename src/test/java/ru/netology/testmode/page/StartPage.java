@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.$$;
 public class StartPage {
     private SelenideElement heading = $$("h2").find(text("Путешествие дня"));
     private static SelenideElement buyButton = $$("button").find(exactText("Купить"));
-    private SelenideElement creditButton = $$("button").find(exactText("Купить в кредит"));
+    private static SelenideElement creditButton = $$("button").find(exactText("Купить в кредит"));
 
     public StartPage() {
         heading.shouldBe(visible);
@@ -20,10 +20,10 @@ public class StartPage {
         return new PaymentPage();
     }
 
-   /* public CreditPage goToCreditPage() {
+    public static CreditPage goToCreditPage() {
         creditButton.click();
         return new CreditPage();
-    }*/
+    }
 }
 
 

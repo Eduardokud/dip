@@ -28,24 +28,17 @@ public class PaymentPage {
     private  SelenideElement continueButton = $(byText("Продолжить"));
     private SelenideElement heading = $(byText("Оплата по карте"));
     private  SelenideElement successfully = $(byText("Успешно"));
+    private SelenideElement errormessenge = $(byText("Ошибка"));
+    private SelenideElement errorMonthmessege = $(byText("Неверно указан срок действия карты"));
+    private SelenideElement errorYearmessege = $(byText("Неверно указан срок действия карты"));
+
+
 
     public PaymentPage() {
         heading.shouldBe(visible);
     }
 
-
-  /*  public static void SetValidDate(Card card) {
-
-        cardNumberField.setValue(card.getNumber());
-        dateMonthField.setValue(card.getMonth());
-        dateYearField.setValue(card.getYear());
-        nameField.setValue(card.getName());
-        cvvField.setValue(card.getCvv());
-        continueButton.click();
-        successfully.shouldBe(visible);
-
-    }*/
-    public  void  Setlogin(Card info){
+    public  void  SetValidDate(Card info){
         cardNumberField.setValue(info.getNumber());
         dateMonthField.setValue(info.getMonth());
         dateYearField.setValue(info.getYear());
@@ -53,8 +46,36 @@ public class PaymentPage {
         cvvField.setValue(info.getCvv());
         continueButton.click();
         successfully.shouldHave(exactText("Успешно"), Duration.ofSeconds(15)).shouldBe(visible);
-        //return new Verify();
     }
+    public void SetInvalidCardNumber(Card info){
+        cardNumberField.setValue(info.getNumber());
+        dateMonthField.setValue(info.getMonth());
+        dateYearField.setValue(info.getYear());
+        nameField.setValue(info.getName());
+        cvvField.setValue(info.getCvv());
+        continueButton.click();
+        errormessenge.shouldHave(exactText("Ошибка"), Duration.ofSeconds(15)).shouldBe(visible);
+    }
+    public void SetInvalidMonth(Card info){
+        cardNumberField.setValue(info.getNumber());
+        dateMonthField.setValue(info.getMonth());
+        dateYearField.setValue(info.getYear());
+        nameField.setValue(info.getName());
+        cvvField.setValue(info.getCvv());
+        continueButton.click();
+        errorMonthmessege.shouldHave(exactText("Неверно указан срок действия карты"), Duration.ofSeconds(15)).shouldBe(visible);
+    }
+    public void SetInvalidYear(Card info){
+        cardNumberField.setValue(info.getNumber());
+        dateMonthField.setValue(info.getMonth());
+        dateYearField.setValue(info.getYear());
+        nameField.setValue(info.getName());
+        cvvField.setValue(info.getCvv());
+        continueButton.click();
+        errorYearmessege.shouldHave(exactText("Неверно указан срок действия карты"), Duration.ofSeconds(15)).shouldBe(visible);
+    }
+
+
 
 }
 
