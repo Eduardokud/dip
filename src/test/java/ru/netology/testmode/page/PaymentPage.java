@@ -1,10 +1,15 @@
 package ru.netology.testmode.page;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import org.openqa.selenium.support.FindBy;
 import ru.netology.testmode.data.Card;
+import ru.netology.testmode.data.DataGenerator;
+import ru.netology.testmode.page.StartPage;
 
 import java.time.Duration;
+import java.util.Set;
 
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.visible;
@@ -12,7 +17,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
-public class CreditPage {
+public class PaymentPage {
     private SelenideElement cardNumberField = $("[placeholder='0000 0000 0000 0000']");
     private SelenideElement dateMonthField = $("[placeholder='08']");
     private SelenideElement dateYearField = $("[placeholder='22']");
@@ -21,13 +26,13 @@ public class CreditPage {
 
     private SelenideElement cvvField = $("[placeholder='999']");
     private SelenideElement continueButton = $(byText("Продолжить"));
-    private SelenideElement heading = $(byText("Кредит по данным карты"));
+    private SelenideElement heading = $(byText("Оплата по карте"));
     private SelenideElement successfully = $(byText("Успешно"));
     private SelenideElement errormessenge = $(byText("Ошибка"));
     private SelenideElement errorMonthmessege = $(byText("Неверно указан срок действия карты"));
     private SelenideElement errorYearmessege = $(byText("Неверно указан срок действия карты"));
 
-    public CreditPage() {
+    public PaymentPage() {
         heading.shouldBe(visible);
     }
 
@@ -59,4 +64,18 @@ public class CreditPage {
         setData(info);
         errorYearmessege.shouldHave(exactText("Неверно указан срок действия карты"), Duration.ofSeconds(15)).shouldBe(visible);
     }
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+

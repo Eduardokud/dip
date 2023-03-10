@@ -1,7 +1,7 @@
 package ru.netology.testmode.page;
 
 import com.codeborne.selenide.SelenideElement;
-import ru.netology.testmoe.page.PaymentPage;
+import ru.netology.testmode.page.PaymentPage;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$$;

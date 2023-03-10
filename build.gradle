@@ -1,10 +1,18 @@
 plugins {
     id 'java'
     id 'io.freefair.lombok' version "5.3.0"
+    id 'io.qameta.allure' version '2.9.6'
 }
+allure {
+    version = '2.16.1'
 
-group 'org.example'
+    useJUnit5 {
+        version = '2.16.1'
+    }
+}
+group 'ru.netology'
 version '1.0-SNAPSHOT'
+sourceCompatibility = 11
 compileJava.options.encoding = "UTF-8"
 compileTestJava.options.encoding = "UTF-8"
 
@@ -18,11 +26,9 @@ dependencies {
     testImplementation 'io.rest-assured:rest-assured:4.3.0'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.6.1'
     testImplementation 'io.rest-assured:json-schema-validator:4.3.1'
-    testImplementation("io.github.bonigarcia:webdrivermanager:5.3.0")
-    testImplementation group: 'com.codeborne', name: 'selenide', version: '6.6.3'
     testImplementation 'com.github.javafaker:javafaker:1.0.2'
-    testImplementation 'org.seleniumhq.selenium:selenium-java:4.1.4'
-   // testImplementation 'org.seleniumhq.selenium:selenium-devtools-v86:4.2.2'
+    testImplementation 'io.qameta.allure:allure-selenide:2.13.0'
+
 
 }
 test {
