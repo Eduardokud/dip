@@ -47,8 +47,8 @@ public class DataGenerator {
     }
 
     public static String getShiftedYear(int year) {
-        String ye = LocalDate.now().plusYears(year).format(DateTimeFormatter.ofPattern("yy"));
-        return ye;
+        String year1 = LocalDate.now().plusYears(year).format(DateTimeFormatter.ofPattern("yy"));
+        return year1;
     }
 
     public static Card getInvalidCardMonth() {

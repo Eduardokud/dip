@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class BuyTest {
     @Test
-    public void BuyTourValidDate() {
+    public void buyTourValidDate() {
         var startPage = open("http://localhost:8080", StartPage.class);
         var paymentPage = StartPage.goToPaymentPage();
         var dateInfo = DataGenerator.getValidCardInfo();
@@ -18,7 +18,7 @@ public class BuyTest {
     }
 
     @Test
-    public void BuyTourInvalidCardNumber() {
+    public void buyTourInvalidCardNumber() {
         var startPage = open("http://localhost:8080", StartPage.class);
         var paymentPage = StartPage.goToPaymentPage();
         var dateInfo = DataGenerator.getInvalidCardNumber();
@@ -27,7 +27,7 @@ public class BuyTest {
     }
 
     @Test
-    public void BuyTourInvalidMonth() {
+    public void buyTourInvalidMonth() {
         var startPage = open("http://localhost:8080", StartPage.class);
         var paymentPage = StartPage.goToPaymentPage();
         var dateInfo = DataGenerator.getInvalidCardMonth();
@@ -36,7 +36,7 @@ public class BuyTest {
     }
 
     @Test
-    public void BuyTourInvalidYear() {
+    public void buyTourInvalidYear() {
         var startPage = open("http://localhost:8080", StartPage.class);
         var paymentPage = StartPage.goToPaymentPage();
         var dateInfo = DataGenerator.getInvalidalidCardYear();

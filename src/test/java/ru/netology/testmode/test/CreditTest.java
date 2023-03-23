@@ -15,7 +15,7 @@ public class CreditTest {
 
 
     @Test
-    public void CreditTourValidDate() {
+    public void creditTourValidDate() {
         var startPage = open("http://localhost:8080", StartPage.class);
         var paymentPage = StartPage.goToCreditPage();
         var dateInfo = DataGenerator.getValidCardInfo();
@@ -24,7 +24,7 @@ public class CreditTest {
     }
 
     @Test
-    public void CreditTourInvalidCardNumber() {
+    public void creditTourInvalidCardNumber() {
         var startPage = open("http://localhost:8080", StartPage.class);
         var paymentPage = StartPage.goToCreditPage();
         var dateInfo = DataGenerator.getInvalidCardNumber();
@@ -33,7 +33,7 @@ public class CreditTest {
     }
 
     @Test
-    public void CreditTourInvalidMonth() {
+    public void creditTourInvalidMonth() {
         var startPage = open("http://localhost:8080", StartPage.class);
         var paymentPage = StartPage.goToCreditPage();
         var dateInfo = DataGenerator.getInvalidCardMonth();
@@ -42,7 +42,7 @@ public class CreditTest {
     }
 
     @Test
-    public void CreditTourInvalidYear() {
+    public void creditTourInvalidYear() {
         var startPage = open("http://localhost:8080", StartPage.class);
         var paymentPage = StartPage.goToCreditPage();
         var dateInfo = DataGenerator.getInvalidalidCardYear();
